@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MPG prediction using linear regression</title>
+  <meta charset="utf-8">
+  <meta name="description" content="MPG prediction using linear regression">
+  <meta name="author" content="Peyman H">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>MPG prediction using linear regression</h1>
+    <h2></h2>
+    <p>Peyman H<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>What is this App?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>1- This app enables the user to predict mpg of a car based on some measureable variables.</p>
+
+<p>2- It works based on a linear regression models that was fitted to the mtcars data set. (can be found in datasets package of R)</p>
+
+<p>3- Linear models are simple, yet useful tools to understand relationships between variables and predict new outputs.</p>
+
+<p>Access the MPG predictor <a href="https://peymanh.shinyapps.io/MPGPredictor/">App</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>mtcars dataset</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The data was extracted from the 1974 Motor Trend US magazine, and comprises fuel consumption and 10 aspects of automobile design and performance for 32 automobiles (1973-74 models).This is a data frame with 32 observations on 11 variables.</p>
+
+<p>1)   mpg     Miles/(US) gallon                         2)     cyl    Number of cylinders</p>
+
+<p>3)   disp    Displacement (cu.in.)                     4)     hp     Gross horsepower</p>
+
+<p>5)   drat    Rear axle ratio                           6)   wt   Weight (1000 lbs)</p>
+
+<p>7)   qsec    1/4 mile time                             8)   vs   V/S</p>
+
+<p>9)   am  Transmission (0 = automatic, 1 = manual)    10)  gear   Number of forward gears</p>
+
+<p>11)  carb    Number of carburetors</p>
+
+<p>Access the MPG predictor <a href="https://peymanh.shinyapps.io/MPGPredictor/">App</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Influential Variables</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Based on our analysis mpg depends mostly on four variables, which are used in this app:</p>
+
+<ul>
+<li><p>Displacement volume of the engine</p></li>
+<li><p>Number of cylinders of the vehicle</p></li>
+<li><p>type of transmission (Manual/Automatic)</p></li>
+<li><p>Weight of the vehicle</p></li>
+</ul>
+
+<p>Access the MPG predictor <a href="https://peymanh.shinyapps.io/MPGPredictor/">App</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Linear Regression Model</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The following is the coefficients of the linear regression model used for this app.</p>
+
+<pre><code class="r">library(datasets)
+mtcars$am &lt;- as.factor(mtcars$am)
+fit &lt;- lm(mpg ~cyl+am+disp+wt,  data=mtcars)
+fit
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = mpg ~ cyl + am + disp + wt, data = mtcars)
+## 
+## Coefficients:
+## (Intercept)          cyl          am1         disp           wt  
+##   40.898313    -1.784173     0.129066     0.007404    -3.583425
+</code></pre>
+
+<p>Access the MPG predictor <a href="https://peymanh.shinyapps.io/MPGPredictor/">App</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='What is this App?'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='mtcars dataset'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Influential Variables'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Linear Regression Model'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
